@@ -1,5 +1,4 @@
 const nextConfig = {
-  swcMinify: true,
   experimental: {
     optimizeCss: true,
   },
