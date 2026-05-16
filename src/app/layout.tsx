@@ -16,14 +16,44 @@ const geistMono = localFont({
 
 // Metadados para SEO
 export const metadata: Metadata = {
-  title: "DailyFocus - Organize suas tarefas",
+  title: {
+    default: "DailyFocus | Fernando Moretes",
+    template: "%s | DailyFocus",
+  },
   description:
-    "Organize suas tarefas diárias com o DailyFocus. Ferramenta de produtividade com foco em gestão de tempo, metas e relatórios.",
+    "DailyFocus é uma aplicação bilíngue de produtividade para organizar tarefas, tempo, metas e foco diário. Criada por Fernando Francisco Azevedo.",
   metadataBase: new URL("https://dailyfocus.moretes.com"),
+  authors: [
+    {
+      name: "Fernando Francisco Azevedo",
+      url: "https://fernando.moretes.com",
+    },
+  ],
+  creator: "Fernando Francisco Azevedo",
+  publisher: "Fernando Francisco Azevedo",
+  keywords: [
+    "DailyFocus",
+    "produtividade",
+    "gestão de tarefas",
+    "time management",
+    "focus app",
+    "Fernando Francisco Azevedo",
+    "Fernando Moretes",
+  ],
+  alternates: {
+    canonical: "https://dailyfocus.moretes.com",
+    languages: {
+      "pt-BR": "https://dailyfocus.moretes.com",
+      en: "https://dailyfocus.moretes.com",
+    },
+  },
   openGraph: {
-    title: "DailyFocus - Organize suas tarefas",
+    type: "website",
+    locale: "pt_BR",
+    alternateLocale: ["en_US"],
+    title: "DailyFocus | Produtividade com foco diário",
     description:
-      "Ferramenta de produtividade com foco em organização de tarefas e gestão de tempo.",
+      "Aplicação de produtividade para organizar tarefas, tempo e foco diário. Portfolio público de Fernando Moretes.",
     url: "https://dailyfocus.moretes.com",
     siteName: "DailyFocus",
     images: [
@@ -37,10 +67,20 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DailyFocus - Organize suas tarefas com eficiência",
+    title: "DailyFocus | Produtividade com foco diário",
     description:
-      "DailyFocus ajuda você a organizar tarefas, gerenciar metas e melhorar sua produtividade.",
+      "Organize tarefas, tempo e foco diário com uma aplicação pública do portfolio Fernando Moretes.",
     images: ["/meta-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -49,8 +89,35 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "DailyFocus",
+    url: "https://dailyfocus.moretes.com",
+    description:
+      "DailyFocus is a bilingual productivity app for daily tasks, time management, goals, and focus.",
+    applicationCategory: "ProductivityApplication",
+    operatingSystem: "Web Browser",
+    author: {
+      "@type": "Person",
+      name: "Fernando Francisco Azevedo",
+      url: "https://fernando.moretes.com",
+      sameAs: [
+        "https://www.linkedin.com/in/fernando-francisco-azevedo/",
+        "https://github.com/fernandofatech",
+        "https://fernando.moretes.com",
+      ],
+    },
+  };
+
   return (
     <html lang="pt-BR">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-800`}
       >
