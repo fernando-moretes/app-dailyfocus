@@ -17,7 +17,7 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@headlessui/react": "^2.2.0",
+    "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
     "@types/node": "^26",
     "@types/react": "^18",
